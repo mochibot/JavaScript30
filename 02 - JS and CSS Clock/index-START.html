@@ -129,13 +129,14 @@
     let totalMoved = 0;
 
     function clock() {
-      totalMoved += 6;
-      sec.style.transform = `rotate(${totalMoved + 90}deg)`;
-      if (totalMoved >= 360) {
-        min.style.transform = `rotate(${6 * Math.floor(totalMoved / 360) + 90}deg)`;
-      } else if (totalMoved >= 3600) {
-        hour.style.transform = `rotate(${6 * Math.floor(totalMoved / 3600) + 90}deg)`;
-      }
+      let time = new Date();
+      let timeSec = time.getSeconds();
+      let timeMin = time.getMinutes();
+      let timeHour = time.getHours();
+
+      sec.style.transform = `rotate(${timeSec * 6 + 90}deg)`;
+      min.style.transform = `rotate(${timeMin * 6 + 90}deg)`; 
+      hour.style.transform = `rotate(${(timeHour % 12) * 30 + (timeMin * 0.5)+ 90}deg)`
     }
     setInterval(clock, 1000);
   </script>
