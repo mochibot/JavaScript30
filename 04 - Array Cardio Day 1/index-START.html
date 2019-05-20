@@ -31,28 +31,61 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    let bornIn50s = inventors.filter(item => (item.year < 1600 && item.year >= 1500));
+    console.log(bornIn50s);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
+    let names = inventors.map(item => item.first + ' ' + item.last);
+    console.log(names);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    let byBirthdate = [...inventors].sort((a, b) => a.year - b.year);
+    console.log(byBirthdate);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
+    let totalYears= inventors.reduce((acc, currVal) => {
+      return acc += (currVal.passed - currVal.year)
+    }, 0);
+    console.log(totalYears);
 
     // 5. Sort the inventors by years lived
-
+    let byYearsLived = inventors.sort((a, b) => {
+      let aLived = a.passed - a.year;
+      let bLived = b.passed - b.year;
+      return bLived - aLived;
+    });
+   
+    console.log(byYearsLived);
+    
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+    /*
+    let boulevards = Array.from(document.querySelectorAll('.mw-category-group a'));
+    let newList = boulevards.filter(item => item.innerHTML.includes(' de ')) 
+    //should be 10
+    */
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    let byLastName = people.sort((a, b) => a.toUpperCase() - b.toUpperCase())
+    console.log(byLastName);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    let dataInstances = data.reduce((items, item) => {
+      if (item in items) {
+        items[item]++
+      } else {
+        items[item] = 1;
+      }
+      return items;
+    }, {})
+    console.log(dataInstances);
 
   </script>
 </body>
