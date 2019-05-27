@@ -18,28 +18,61 @@
     }
 
     // Regular
+    console.log('something');
 
     // Interpolated
+    let animal = 'dog'
+    console.log(`I don't have a ${animal}`)
 
     // Styled
+    console.log('%csome text', 'color: red'); //put%c in the front things want to style and apply style
 
     // warning!
+    console.warn('some warning');
 
     // Error :|
+    console.error('some error');
 
     // Info
+    console.info('some fact')
 
     // Testing
+    console.assert(1 === 2, 'that is wrong') //only fire if the condition is false
 
     // clearing
+    //console.clear(); will clear the console, comment out to see the other console.logs
 
     // Viewing DOM Elements
+    let content = document.querySelector('p');
+    console.log(content); //show the element itself
+    console.dir(content); //show all available methods and properties
 
     // Grouping together
+    dogs.forEach(item => {
+      console.group(`${item.name}`);
+      //console.groupCollapse(`${item.name}`);
+      console.log(`This is ${item.name}`);
+      console.log(`${item.name} is ${item.age} year-old`);
+      console.groupEnd(`${item.name}`);
+    })
 
     // counting
+    console.count('thing') //count how many time it was run
+    console.count('thing')
+    console.count('thing')
+    console.count('thing')
 
     // timing
+    console.time('fetching data');
+    fetch('http://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data')
+        console.log(data);
+      })
+
+    //table
+    console.table(dogs); //take array and turn it in table form
 
   </script>
 </body>
