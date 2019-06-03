@@ -7,6 +7,18 @@
 </head>
 <body>
 <script>
+  let pressed = [];
+  let secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
+
+  window.addEventListener('keyup', (event) => {
+    pressed.push(event.key);
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+    console.log(pressed);
+    if (pressed.join('') === secretCode.join('')) {
+    cornify_add();
+    }
+  })
+
 </script>
 </body>
 </html>
