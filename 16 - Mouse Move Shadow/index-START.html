@@ -35,6 +35,28 @@
   </style>
 
 <script>
+  let container = document.querySelector('.hero');
+  let text = document.querySelector('h1')
+  let walk = 300 //how far shadow go
+
+  function shadow(event) {
+    let width = container.offsetWidth;
+    let height = container.offsetHeight;
+    //let { offsetWidth: width, offsetHeight: height } = container;
+    let x = event.offsetX;
+    let y = event.offsetY;
+    //get the cursor position
+    if (this !== event.target) {
+      x = x + event.target.offsetLeft;
+      y = y + event.target.offsetTop;
+    }
+    let xWalk = Math.round((x / width * walk) - (walk / 2))
+    let yWalk = Math.round((y / height * walk) - (walk / 2))
+    text.style.textShadow = `${xWalk}px ${yWalk}px 0 lightgray, ${-xWalk}px ${yWalk}px 0 gray, ${yWalk}px ${xWalk}px 0 darkgray, ${yWalk}px ${-xWalk}px 0 dimgray`;
+  } 
+
+  container.addEventListener('mousemove', shadow)
+
 </script>
 </body>
 </html>
