@@ -48,6 +48,34 @@
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
+const newBands = bands.map(item => {
+  if (item.startsWith('The')) {
+    return item.slice(4);
+  } else if (item.startsWith('An ')) {
+    return item.slice(3);
+  } else if (item.startsWith('A ')) {
+    return item.slice(2);
+  } else {
+    return item;
+  }
+}).sort();
+
+const sorted = [];
+newBands.forEach(item => {
+  let title = bands.find(element => element.includes(item));
+  sorted.push(title);
+})
+
+//console.log(newBands)
+//console.log(sorted);
+
+const bandsList = document.getElementById('bands');
+for (let i = 0; i < sorted.length; i++) {
+  let bandName = document.createElement('li');
+  bandName.textContent = sorted[i];
+  bandsList.appendChild(bandName);
+}
+
 
 </script>
 
